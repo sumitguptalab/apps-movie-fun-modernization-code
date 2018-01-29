@@ -1,0 +1,16 @@
+apply from: "../../java.gradle"
+
+apply plugin: "org.springframework.boot"
+
+group = "org.superbiz"
+version = "1.1.0-SNAPSHOT"
+description = "OpenEJB :: Web Examples :: Blobstore"
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web"
+
+    compile "org.slf4j:slf4j-api:$slf4jVersion"
+
+    compile "org.apache.tika:tika-core:1.14"
+    compile "com.amazonaws:aws-java-sdk:1.11.74"
+}
