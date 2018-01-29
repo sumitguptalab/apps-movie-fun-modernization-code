@@ -9,6 +9,7 @@ buildscript {
 
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
+  //      classpath 'org.cloudfoundry:cf-gradle-plugin:1.0.1'
     }
 }
 
@@ -19,6 +20,7 @@ repositories {
 apply plugin: "java"
 apply plugin: "war"
 apply plugin: "org.springframework.boot"
+//apply plugin: 'cloudfoundry'
 
 group = "org.superbiz"
 version = "1.1.0-SNAPSHOT"
@@ -45,3 +47,32 @@ dependencies {
     compile "org.apache.geronimo.specs:geronimo-osgi-locator:1.1"
     compile "org.apache.geronimo.components:geronimo-jaspi:2.0.0"
 }
+
+//cloudfoundry {
+//    target = "https://api.sys.pikes.pal.pivotal.io"
+//    space = "sandbox"
+//    application = "moviefun"
+//    file = file("build/libs/moviefun-1.1.0-SNAPSHOT.war")
+//    uri = "moviefun-delightful-lizard.apps.pikes.pal.pivotal.io"
+//    memory = 512
+//    instances = 1
+//    username = 'sumit.gupta@kroger.com'
+//    password = '8b66ac8f'
+//
+//    env = [
+//            "S3_ENDPOINTURL": "http://127.0.0.1:9000",
+//            "S3_ACCESSKEY"  : "6211RW2NHYXXHL3MAICT",
+//            "S3_SECRETKEY"  : "zwz+2gNuhen8zUUeqrKdsV02z0RjgTKGkwipgOl0",
+//            "S3_BUCKETNAME" : "moviefun"
+//    ]
+//
+//    serviceInfos {
+//        "app-db" {
+//            label = "p-mysql"
+////            name = "movies-mysql"
+//            provider = "n/a"
+//            version = "n/a"
+//            plan = "100mb"
+//        }
+//    }
+//}
