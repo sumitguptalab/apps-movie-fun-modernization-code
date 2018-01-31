@@ -96,20 +96,9 @@ task teardownPcfEnv {
     }
 }
 
-//task cleanBuildPublish {
-//    dependsOn "clean"
-//    dependsOn "build"
-//    dependsOn "teardownPcfEnv"
-//    dependsOn "setupPcfEnv"
-//    dependsOn "deploy"
-//    dependsOn "flywayMigrate"
-//    tasks.findByName("build").mustRunAfter "clean"
-//    tasks.findByName("teardownPcfEnv").mustRunAfter "build"
-//    tasks.findByName("setupPcfEnv").mustRunAfter "teardownPcfEnv"
-//    tasks.findByName("deploy").mustRunAfter "setupPcfEnv"
-//    tasks.findByName("flywayMigrate").mustRunAfter "deploy"
-//}
-//
-//def dependsOn(String s) {
-//    s.execute()
-//}
+task buildSkipTest {
+    'gradle build -x test'.execute().text
+}
+task cleanBuildDeployToCF(type: GradleBuild) {
+    tasks = ['clean', 'buildSkipTest', 'teardownPcfEnv', 'setupPcfEnv', 'deploy' ,'cfMigrate']
+}
