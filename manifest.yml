@@ -11,10 +11,10 @@ applications:
   - album-database
   env:
     GRANT_TYPE: client_credentials
-    S3_ENDPOINTURL: http://s3.amazonaws.com
-    S3_ACCESSKEY: AKIAIQXBIG64ETEV4ZAQ
-    S3_SECRETKEY: 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
-    S3_BUCKETNAME: cf-7d5d42c2-e37f-48cb-a77d-aba2896c9bf4
+    S3_ENDPOINTURL:
+    S3_ACCESSKEY:
+    S3_SECRETKEY:
+    S3_BUCKETNAME:
     SECURITY_FORCE_HTTPS: true
   routes:
   - route: album-service-sg.apps.pikes.pal.pivotal.io
@@ -32,8 +32,8 @@ applications:
   routes:
   - route: movie-fun-app-sg.apps.pikes.pal.pivotal.io
   env:
-    S3_ENDPOINTURL: http://s3.amazonaws.com
-    S3_ACCESSKEY: AKIAIQXBIG64ETEV4ZAQ
-    S3_SECRETKEY: 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
-    S3_BUCKETNAME: cf-7d5d42c2-e37f-48cb-a77d-aba2896c9bf4
+    S3_ENDPOINTURL:
+    S3_ACCESSKEY:
+    S3_SECRETKEY:
+    S3_BUCKETNAME:
     SECURITY_FORCE_HTTPS: true
