@@ -37,7 +37,7 @@ class AlbumsUpdater(private val blobStore: BlobStore, private val albumsReposito
             return
         }
 
-        val albumsToHave = CsvUtils.readFromCsv<Album>(objectReader, maybeBlob.get().inputStream)
+        val albumsToHave = CsvUtils(objectReader, maybeBlob.get().inputStream).readFromCsv<Album>()
         val albumsWeHave = albumsRepository.getAlbums()
 
         createNewAlbums(albumsToHave, albumsWeHave)
@@ -48,7 +48,7 @@ class AlbumsUpdater(private val blobStore: BlobStore, private val albumsReposito
 
     private fun createNewAlbums(albumsToHave: List<Album>, albumsWeHave: List<Album>) {
         val albumsToCreate = albumsToHave
-                .filter { album -> albumsWeHave.stream().noneMatch({ album.isEquivalent(it) }) }
+                .filter { album -> !albumsWeHave.toList().contains(album)}
 
         albumsToCreate.forEach({ albumsRepository.addAlbum(it) })
     }

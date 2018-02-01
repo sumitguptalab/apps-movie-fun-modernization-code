@@ -39,10 +39,6 @@ data class Album(
 
     fun hasId(): Boolean = id != null
 
-    fun isEquivalent(other: Album): Boolean {
-        if (year != other.year) return false
-        if (title != other.title) return false
-        if (artist != other.artist) return false
-        return true
-    }
+    fun isEquivalent(other: Album): Boolean =  (year == other.year && title == other.title && artist == other.artist)
+
 }

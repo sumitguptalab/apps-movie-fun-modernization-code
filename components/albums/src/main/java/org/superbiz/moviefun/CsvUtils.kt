@@ -1,18 +1,11 @@
 package org.superbiz.moviefun
 
 import com.fasterxml.jackson.databind.ObjectReader
-
 import java.io.IOException
 import java.io.InputStream
 
-object CsvUtils {
+data class CsvUtils(private val objectReader: ObjectReader, private val inputStream: InputStream) {
 
     @Throws(IOException::class)
-    fun <T> readFromCsv(objectReader: ObjectReader, inputStream: InputStream): List<T> {
-        val results = mutableListOf<T>()
-
-       objectReader.readValues<T>(inputStream) to results
-
-        return results
-    }
+    fun <T> readFromCsv() : List<T>  = objectReader.readValues<T>(inputStream).readAll().toList()
 }
