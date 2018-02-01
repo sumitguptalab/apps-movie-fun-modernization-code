@@ -96,9 +96,9 @@ task teardownPcfEnv {
     }
 }
 
-task buildSkipTest {
-    'gradle build -x test'.execute().text
-}
-task cleanBuildDeployToCF(type: GradleBuild) {
-    tasks = ['clean', 'buildSkipTest', 'teardownPcfEnv', 'setupPcfEnv', 'deploy' ,'cfMigrate']
-}
+//task buildSkipTest {
+//    'gradle build -x test'.execute().text
+//}
+//task cleanBuildDeployToCF(type: GradleBuild) {
+//    tasks = ['clean', 'buildSkipTest', 'teardownPcfEnv', 'setupPcfEnv', 'deploy' ,'cfMigrate']
+//}
