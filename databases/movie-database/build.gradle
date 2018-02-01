@@ -42,6 +42,8 @@ task closeTunnel {
 task cfMigrate(type: FlywayMigrateTask, dependsOn: openTunnel) {
     if (System.env.CF_MIGRATE) {
         extension = setupProdFlywayExtension(new FlywayExtension(), "movie-service")
+    } else {
+        println 'You need to set CF_MIGRATE flag if you want to run cfMigrate task!!!!!!!!!!!!!!!!!!!'
     }
 }
 
